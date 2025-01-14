@@ -2,10 +2,11 @@ class Node:
 	def __init__(self, value, next=None):
 		self.value = value
 		self.next = next
-
+#P1 Nested Constructors
+print("P1 Solution: 4->3->2")
 head1 = Node(4, Node(3, Node(2, None)))
 while head1:
-    #print(head1.value)
+    print(head1.value)
     head1 = head1.next
 
 #P2 Find Frequency
@@ -19,8 +20,6 @@ def count_element(head, val):
         head = head.next
     return d.get(val)
 
-
-
 head2 = Node(3, Node(1, Node(2, Node(1, None))))
 print(count_element(head2, 1))
 
@@ -29,6 +28,7 @@ print("-------------------------------")
 
 
 #P3 Remove Tail
+print("Problem 3")
 # Helper function to print the linked list
 def print_list(node):
     current = node
@@ -62,22 +62,42 @@ def printNodeVals(head:Node):
     while head:
         print(head.value)
         head = head.next
-
-printNodeVals(head3)
+print_list(head3)
+print("removed tail:\n")
 remove_tail(head3)
+print_list(head3)
+
+
+
+
 print("------------")
-printNodeVals(remove_tail(head3))
-
-
 
 
 #P4 Find the Middle 
+print("Problem 4: Find the middle (Slow and Fast pointer technique)")
+'''
+#Understand: find the middle value in a linked list 
+Match: slow and fast pointer technique
+Plan: for every index P1 advances, P2 will advance two indexes. 
+    P2 will advance first- if it is false return P1 - else (it's true) we update P1 to point at the next index
+    
+'''
+head4 = Node(1, Node(2, Node(3, None)))
+
 def find_middle_element(head):
-	pass
+    slow = head
+    fast = head
+    
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+
+    return slow.value
+
+print( find_middle_element(head4) )
 
 
 
-
-
-head3 = Node(3, Node(1, Node(2, Node(1, None))))
-
+#P5 Palindrome
+def is_palindrome(head) -> bool:
+	
